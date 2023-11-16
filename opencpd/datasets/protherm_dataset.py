@@ -23,7 +23,7 @@ class ProthermDataset(data.Dataset):
         else:
             self.data = data
         
-        self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D", cache_dir="/gaozhangyang/model_zoom/transformers")
+        self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D")
     
     @cached_property
     def cache_data(self):

@@ -87,29 +87,8 @@ class MemoESMIF(nn.Module):
 
 if __name__ == '__main__': 
     
-    # work_space = '/gaozhangyang/experiments/PiFoldV2/data/mmseq_workspace2'
-    # target_seqs = ["MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPQTKTYFPHFDLSHGSAQVKGHG", "MVHLTPEEKSAVTALWGKVNVDEVGVEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKV",
-    #  "MVLSPADKTNVKAAWGKVGAGGAEALERMFLSFPQKTYYTYFPHFDLSHGSAQVKGHG"]
 
-    # query_seqs = ["MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKFPHFDLSHGSAQV", "MVHLTPEEKSAVTALWGKVNVDEVGGGRLLVVYPWTQRFFESFGDLSTPDAV",]
-    
-    # results = search_seqs(query_seqs, target_seqs, work_space)
-    # print(results)
-        
-
-    import biotite.sequence as seq
-    import biotite.sequence.align as align
-
-    # Create example query and target protein sequences
-    query_seq1 = seq.ProteinSequence("MSKXXKAFLNKXXL")
-    target_seq1 = seq.ProteinSequence("MSKVKAALNKVLL")
-    target_seq2 = seq.ProteinSequence("MSKVKKALNKVLL")
-    target_seq3 = seq.ProteinSequence("MSTVAAALKMLLL")
-
-    results = search_seqs_biotite(["MSKXXKAFLNKXXL"], ["MSKVKAALNKVLL", "MSKVKKALNKVLL", "MSTVAAALKMLLL"])
-
-    # Print the alignments
-    print("Query alignments:")
+    pass
 
 
 

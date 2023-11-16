@@ -1,6 +1,6 @@
 import logging
 import sys
-# sys.path.append('/gaozhangyang/experiments/OpenCPD/colab/ProteinInvBench')
+
 import json
 import torch
 import os.path as osp

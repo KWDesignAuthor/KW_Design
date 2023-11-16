@@ -52,6 +52,4 @@ class CASPDataset(data.Dataset):
         return self.data[index]
     
 if __name__ == '__main__':
-    dataset = CASPDataset('/gaozhangyang/experiments/OpenCPD/data/casp15/')
-    for data in dataset:
-        print(data)
+    pass
