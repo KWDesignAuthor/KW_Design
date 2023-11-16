@@ -1,4 +1,4 @@
-# Copyright (c) CAIRI AI Lab. All rights reserved
+
 
 from .alphadesign_model import AlphaDesign_Model
 from .esmif_model import GVPTransformerModel as ESMIF_Model

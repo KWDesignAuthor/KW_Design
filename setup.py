@@ -98,13 +98,13 @@ if __name__ == '__main__':
     setup(
         name='OpenCPD',
         version=get_version(),
-        description='OpenCPD: Open-source Toolbox for Computaional Protein Design',
+        description='XXXXXX',
         long_description=readme(),
         long_description_content_type='text/markdown',
-        author='CAIRI Westlake University Contributors',
-        author_email='lisiyuan@westlake.edu.com',
+        author='XXXX',
+        author_email='XXX',
         keywords='protein design, ai for science',
-        url='https://github.com/A4Bio/OpenCPD',
+        url='xxxx',
         packages=find_packages(exclude=('configs', 'tools', 'demo')),
         classifiers=[
             'Development Status :: 4 - Beta',

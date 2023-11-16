@@ -1,4 +1,4 @@
-# Copyright (c) CAIRI AI Lab. All rights reserved
+
 
 from .ema_hook import EMAHook, SwitchEMAHook
 from .hooks import Hook, Priority, get_priority

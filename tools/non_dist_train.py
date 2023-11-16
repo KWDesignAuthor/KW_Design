@@ -128,19 +128,4 @@ class Exp:
 
 
 if __name__ == '__main__':
-    args = create_parser().parse_args()
-    config = args.__dict__
-
-    if args.wandb:
-        os.environ["WANDB_API_KEY"] = "0d59697155bbf94cf44d704252e1eb2186dca441"
-        wandb.init(project="Refinefold", entity="tancheng", config=config, name=args.ex_name)
-
-    default_params = load_config(osp.join('./configs', args.method + '.py' if args.config_file is None else args.config_file))
-    config.update(default_params)
-    
-    exp = Exp(args)
-
-    print('>>>>>>>>>>>>>>>>>>>>>>>>>> training <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-    exp.train()
-    print('>>>>>>>>>>>>>>>>>>>>>>>>>> testing  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-    test_perp, test_rec = exp.test()
+    pass

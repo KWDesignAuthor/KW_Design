@@ -1,4 +1,4 @@
-# Copyright (c) CAIRI AI Lab. All rights reserved
+
 
 import warnings
 from packaging.version import parse

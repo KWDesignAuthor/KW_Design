@@ -1,4 +1,4 @@
-# Copyright (c) CAIRI AI Lab. All rights reserved
+
 
 from .alphafold_dataset import AlphaFoldDataset
 from .cath_dataset import CATHDataset

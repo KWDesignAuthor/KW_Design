@@ -1,4 +1,4 @@
-# Copyright (c) CAIRI AI Lab. All rights reserved
+
 
 from .config_utils import Config, check_file_exist
 from .design_utils import (cal_dihedral, _dihedrals, _hbonds, _rbf, _get_rbf, _get_dist,
