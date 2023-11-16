@@ -43,6 +43,7 @@ def create_parser():
     parser.add_argument('--config_file', '-c', default=None, type=str)
     
     # Training parameters
+    
     parser.add_argument('--epoch', default=20, type=int, help='end epoch')
     parser.add_argument('--log_step', default=1, type=int)
     parser.add_argument('--lr', default=0.00001, type=float, help='Learning rate')
