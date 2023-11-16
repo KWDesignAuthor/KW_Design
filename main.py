@@ -32,7 +32,7 @@ def create_parser():
     # CATH
     # dataset parameters
     parser.add_argument('--data_name', default='MPNN', choices=['MPNN', 'PDB', 'CATH4.2', 'TS50', 'CATH4.3'])
-    parser.add_argument('--data_root', default='/gaozhangyang/experiments/OpenCPD/data/')
+    parser.add_argument('--data_root', default='/data/')
     parser.add_argument('--batch_size', default=4, type=int)
     parser.add_argument('--num_workers', default=4, type=int)
     parser.add_argument('--score_thr', default=70.0, type=float)

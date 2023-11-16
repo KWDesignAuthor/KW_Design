@@ -93,12 +93,12 @@ def load_data(data_name, method, batch_size, data_root, pdb_path, split_csv, max
         test_set.change_mode('test')
         
         collate_fn = featurize_GTrans
-    elif data_name == 'AlphaFold':
-        af_set = AlphaFoldDataset(osp.join(data_root, 'af2db'), upid=upid, mode='train', limit_length=limit_length, joint_data=joint_data)
-        train_set, valid_set, test_set = map(lambda x: copy.copy(x), [af_set] * 3)
-        valid_set.change_mode('valid')
-        test_set.change_mode('test')
-        collate_fn = featurize_AF
+    # elif data_name == 'AlphaFold':
+    #     af_set = AlphaFoldDataset(osp.join(data_root, 'af2db'), upid=upid, mode='train', limit_length=limit_length, joint_data=joint_data)
+    #     train_set, valid_set, test_set = map(lambda x: copy.copy(x), [af_set] * 3)
+    #     valid_set.change_mode('valid')
+    #     test_set.change_mode('test')
+    #     collate_fn = featurize_AF
     elif data_name=='MPNN':
         train_set = MPNNDataset(mode='train')
         valid_set = MPNNDataset(mode='valid')
