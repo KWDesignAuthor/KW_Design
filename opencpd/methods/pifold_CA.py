@@ -172,7 +172,7 @@ class PiFold_CA(Base_method):
         sv_results = {"title": [],
                       "true_seq":[],
                       "pred_probs":[],
-                      "tokenizer":AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D", cache_dir="/gaozhangyang/model_zoom/transformers")}
+                      "tokenizer":AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D", cache_dir="main/")}
         with torch.no_grad():
             for protein in tqdm(dataset):
                 if protein is None:
