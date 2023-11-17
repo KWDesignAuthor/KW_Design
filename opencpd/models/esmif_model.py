@@ -22,7 +22,7 @@ class GVPTransformerModel(nn.Module):
     def __init__(self, args):
         super().__init__()
         # alphabet = Alphabet.from_architecture()
-        alphabet = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D") 
+        alphabet = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="main/results/") 
         encoder_embed_tokens = self.build_embedding(
             args, alphabet, args.encoder_embed_dim,
         )
