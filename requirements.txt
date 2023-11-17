@@ -39,16 +39,6 @@ click==8.0.3
 cloudpickle @ file:///tmp/build/80754af9/cloudpickle_1632508026186/work
 clyent==1.2.2
 colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
-conda==4.11.0
-conda-build==3.21.5
-conda-content-trust @ file:///tmp/build/80754af9/conda-content-trust_1617045594566/work
-conda-pack @ file:///tmp/build/80754af9/conda-pack_1611163042455/work
-conda-package-handling @ file:///tmp/build/80754af9/conda-package-handling_1618262147379/work
-conda-repo-cli @ file:///tmp/build/80754af9/conda-repo-cli_1620168426516/work
-conda-token @ file:///tmp/build/80754af9/conda-token_1620076980546/work
-conda-verify==3.4.2
-contextlib2 @ file:///Users/ktietz/demo/mc3/conda-bld/contextlib2_1630668244042/work
-cookiecutter @ file:///tmp/build/80754af9/cookiecutter_1617748928239/work
 cryptography @ file:///tmp/build/80754af9/cryptography_1633520369886/work
 cycler==0.10.0
 Cython @ file:///tmp/build/80754af9/cython_1636035166688/work
@@ -100,15 +90,6 @@ jinja2-time @ file:///tmp/build/80754af9/jinja2-time_1617751524098/work
 joblib @ file:///tmp/build/80754af9/joblib_1635411271373/work
 json5 @ file:///tmp/build/80754af9/json5_1624432770122/work
 jsonschema @ file:///Users/ktietz/demo/mc3/conda-bld/jsonschema_1630511932244/work
-jupyter @ file:///tmp/build/80754af9/jupyter_1607700846274/work
-jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1616770841739/work
-jupyter-console @ file:///tmp/build/80754af9/jupyter_console_1616615302928/work
-jupyter-core @ file:///tmp/build/80754af9/jupyter_core_1633420104186/work
-jupyter-server @ file:///tmp/build/80754af9/jupyter_server_1616084066671/work
-jupyterlab @ file:///tmp/build/80754af9/jupyterlab_1635799997693/work
-jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
-jupyterlab-server @ file:///tmp/build/80754af9/jupyterlab_server_1633419203660/work
-jupyterlab-widgets @ file:///tmp/build/80754af9/jupyterlab_widgets_1609884341231/work
 keyring @ file:///tmp/build/80754af9/keyring_1629321552962/work
 kiwisolver @ file:///tmp/build/80754af9/kiwisolver_1612281846643/work
 lazy-object-proxy @ file:///tmp/build/80754af9/lazy-object-proxy_1616529027849/work
