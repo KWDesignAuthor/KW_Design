@@ -8,13 +8,11 @@ from opencpd.modules.pifold_module import *
 from transformers import AutoTokenizer
 
 
-pair_lst = ['N-N', 'C-C', 'O-O', 'Cb-Cb', 'Ca-N', 'Ca-C', 'Ca-O', 'Ca-Cb', 'N-C', 'N-O', 'N-Cb', 'Cb-C', 'Cb-O', 'O-C', 'N-Ca', 'C-Ca', 'O-Ca', 'Cb-Ca', 'C-N', 'O-N', 'Cb-N', 'C-Cb', 'O-Cb', 'C-O']
 
-
-class PiFold_Model(nn.Module):
+class PiFold_CA_Model(nn.Module):
     def __init__(self, args, **kwargs):
         """ Graph labeling network """
-        super(PiFold_Model, self).__init__()
+        super(PiFold_CA_Model, self).__init__()
         self.args = args
         self.augment_eps = args.augment_eps
         node_features = args.node_features
@@ -27,29 +25,34 @@ class PiFold_Model(nn.Module):
         self.num_positional_embeddings = 16
 
         self.dihedral_type = args.dihedral_type
-        self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="/gaozhangyang/model_zoom/transformers")
+        self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D", cache_dir="/gaozhangyang/model_zoom/transformers")
         alphabet = [one for one in 'ACDEFGHIKLMNPQRSTVWYX']
         self.token_mask = torch.tensor([(one in alphabet) for one in self.tokenizer._token_to_id.keys()])
         
-        # self.full_atom_dis = args.full_atom_dis
-        
-        # node_in = 12
 
-        # node_in = node_in + 9 + 576 # node_in + 9 + 576
         prior_matrix = [
             [-0.58273431, 0.56802827, -0.54067466],
             [0.0       ,  0.83867057, -0.54463904],
             [0.01984028, -0.78380804, -0.54183614],
         ]
-
-        # prior_matrix = torch.rand(self.args.virtual_num,3)
         self.virtual_atoms = nn.Parameter(torch.tensor(prior_matrix)[:self.args.virtual_num,:])
-        # num_va = self.virtual_atoms.shape[0]
-        # edge_in = (15 + 9 * num_va + (num_va - 1) * num_va) * 16 + 16 + 7 
 
-        node_in = 0
+
+        node_in, pair_num = 0, 0
         if self.args.node_dist:
-            pair_num = 6
+            if self.args.node_Ca_N:
+                pair_num += 1
+            if self.args.node_Ca_C:
+                pair_num += 1
+            if self.args.node_Ca_O:
+                pair_num += 1
+            if self.args.node_N_C:
+                pair_num += 1
+            if self.args.node_N_O:
+                pair_num += 1
+            if self.args.node_O_C:
+                pair_num += 1    
+            
             if self.args.virtual_num>0:
                 pair_num += self.args.virtual_num*(self.args.virtual_num-1)
             node_in += pair_num*self.num_rbf
@@ -187,6 +190,23 @@ class PiFold_Model(nn.Module):
         chain_encoding = torch.masked_select(chain_encoding, mask_bool)
 
         # angle & direction
+        N_coords = X[:,:,0]
+        Ca_coords = X[:,:,1]
+        C_coords = X[:,:,2]
+        if not self.args.node_Ca_N:
+            X = torch.stack([
+                            F.pad(Ca_coords[:,:-1], (0,0,1,0)),
+                            Ca_coords,
+                            F.pad(Ca_coords[:,1:], (0,0, 0,1)),
+                            F.pad(Ca_coords[:,2:], (0,0, 0,2))], dim=-2)
+        
+        if self.args.node_Ca_N and (not self.args.node_Ca_O):
+            X = torch.stack([
+                            N_coords,
+                            Ca_coords,
+                            C_coords,
+                            F.pad(Ca_coords[:,2:], (0,0, 0,2))], dim=-2)
+        
         V_angles = _dihedrals(X, self.dihedral_type) 
         V_angles = node_mask_select(V_angles)
 
@@ -212,7 +232,20 @@ class PiFold_Model(nn.Module):
                                         + virtual_atoms[i][2] * c \
                                         + 1 * atom_Ca
 
-        node_list = ['Ca-N', 'Ca-C', 'Ca-O', 'N-C', 'N-O', 'O-C']
+        node_list = []
+        if self.args.node_Ca_N:
+            node_list.append("Ca-N")
+        if self.args.node_Ca_C:
+            node_list.append("Ca-C")
+        if self.args.node_Ca_O:
+            node_list.append("Ca-O")
+        if self.args.node_N_C:
+            node_list.append("N-C")
+        if self.args.node_N_O:
+            node_list.append("N-O")
+        if self.args.node_O_C:
+            node_list.append("O-C")
+        
         node_dist = []
         for pair in node_list:
             atom1, atom2 = pair.split('-')

@@ -31,7 +31,7 @@ class KWDesign(Base_method):
                 self.model.memo_esmif.memory = memories['memo_esmif']
         
         if self.args.recycle_n>1:
-            params = torch.load(osp.join(self.args.res_dir,  self.args.ex_name, "checkpoints", f"msa{self.args.msa_n}_recycle{self.args.recycle_n-1}_epoch{self.args.load_epoch}.pth"))
+            params = torch.load(osp.join(self.args.res_dir,   "KWDesign/checkpoints", f"msa{self.args.msa_n}_recycle{self.args.recycle_n-1}_epoch{self.args.load_epoch}.pth"))
             self.model.load_state_dict(params, strict=False)
             for i in range(self.args.recycle_n-1):
                 submodule = self.model.get_submodule(f"Design{i+1}")
@@ -209,7 +209,7 @@ class KWDesign(Base_method):
         sv_results = {"title": [],
                       "true_seq":[],
                       "pred_probs":[],
-                      "tokenizer":AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="main/results/")}
+                      "tokenizer":AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="/gaozhangyang/model_zoom/transformers")}
         with torch.no_grad():
             for protein in tqdm(dataset):
                 if protein is None:
