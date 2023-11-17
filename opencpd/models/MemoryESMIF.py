@@ -80,7 +80,8 @@ class MemoESMIF(nn.Module):
             
             # self.save2memory(unseen,outputs, batch['title'], num_nodes)
             self.update(unseen, num_nodes, outputs)
-        
+            del outputs
+            torch.cuda.empty_cache()
         return {'title':self.titles, 'embeds':self.out_embeds}
 
 
