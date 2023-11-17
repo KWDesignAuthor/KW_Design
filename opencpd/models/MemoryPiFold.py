@@ -93,10 +93,10 @@ class MemoPiFold_model(nn.Module):
             attn_mask = self.attention_mask[unseen[int(id)]]
             
             # save to memory
-            self.memory[title] = {'conf': conf[attn_mask].detach().to('cpu'), 
-                                'embed': embed[attn_mask].detach().to('cpu'), 
-                                'prob': prob[attn_mask].detach().to('cpu'),
-                                'h_E':pretrain_gnn['h_E'][edge_mask].detach().to('cpu')}
+            # self.memory[title] = {'conf': conf[attn_mask].detach().to('cpu'), 
+            #                     'embed': embed[attn_mask].detach().to('cpu'), 
+            #                     'prob': prob[attn_mask].detach().to('cpu'),
+            #                     'h_E':pretrain_gnn['h_E'][edge_mask].detach().to('cpu')}
     
     @torch.no_grad()
     def forward(self, batch, use_memory=False):
