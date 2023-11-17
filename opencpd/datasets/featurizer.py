@@ -9,7 +9,7 @@ from collections.abc import Mapping, Sequence
 from torch_geometric.data import Data, Batch
 from torch.utils.data.dataloader import default_collate
 from transformers import AutoTokenizer
-tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="main/results/") # mask token: 32
+tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="main/") # mask token: 32
 
 def _normalize(tensor, dim=-1):
     '''
