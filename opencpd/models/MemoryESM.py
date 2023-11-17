@@ -128,7 +128,8 @@ class MemoESM(nn.Module):
             
             # self.save2memory(unseen,outputs, batch['title'], new_batch['attention_mask'])
             self.update(unseen, new_batch['attention_mask'], num_nodes, outputs)
-        
+            del outputs
+            torch.cuda.empty_cache()
         return {'title':self.titles,'pred_ids':self.out_pred_ids, 'confs':self.out_confs, 'embeds':self.out_embeds, 'attention_mask':batch['attention_mask']}
 
 
