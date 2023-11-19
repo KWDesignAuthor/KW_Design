@@ -59,5 +59,6 @@ class PretrainPiFold_Model(PiFold_Model):
                "E_idx":P_idx,
                "batch_id":batch_id,
                "h_E":h_P}
+        print("ret",ret)
         return ret
 
