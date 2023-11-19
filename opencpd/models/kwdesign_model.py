@@ -144,6 +144,7 @@ class Design_Model(nn.Module):
             new_batch['esm_feat'] = esm_feat
         
         results = self.GNNTuning(new_batch, Tuning_memory)
+        print('New Batch',new_batch)
         
         avg_confs = (results['attention_mask']*results['confs']).sum(dim=1)/results['attention_mask'].sum(dim=1)
         self.confidence.append(avg_confs)
@@ -226,7 +227,7 @@ class KWDesign_model(nn.Module):
 
         outputs = {f"log_probs{i+1}": log_probs_list[i] for i in range(len(log_probs_list))}
         outputs["log_probs"]=log_probs
-        
+        print('KWDesign Outputs:', outputs)
         return outputs
     
 
