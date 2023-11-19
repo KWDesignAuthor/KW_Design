@@ -78,6 +78,7 @@ class Exp:
     
     def _preparation(self):
         set_seed(self.args.seed)
+        torch.use_deterministic_algorithms(True)
         # log and checkpoint
         self.path = osp.join(self.args.res_dir, self.args.ex_name)
         check_dir(self.path)
