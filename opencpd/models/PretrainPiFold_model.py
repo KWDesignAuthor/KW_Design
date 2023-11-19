@@ -16,13 +16,18 @@ class PretrainPiFold_Model(PiFold_Model):
     
     @torch.no_grad()
     def forward(self, batch):
+        print(batch)
         h_V, h_P, P_idx, batch_id = batch['h_V'], batch['h_E'], batch['E_idx'], batch['batch_id']
         device = h_V.device
+        
         h_V = self.W_v(self.norm_nodes(self.node_embedding(h_V)))
         h_P = self.W_e(self.norm_edges(self.edge_embedding(h_P)))
         
+        print("Before encoder",h_V)
         h_V, h_P = self.encoder(h_V, h_P, P_idx, batch_id)
+        print("After encoder",h_V)
         log_probs, logits = self.decoder(h_V, batch_id)
+        print("log_probs",log_probs)
         probs = F.softmax(logits, dim=-1)
         conf, pred_id = probs.max(dim=-1)
         
