@@ -27,7 +27,7 @@ class PiFold_Model(nn.Module):
         self.num_positional_embeddings = 16
 
         self.dihedral_type = args.dihedral_type
-        self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="main/")
+        self.tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D",cache_dir="/gaozhangyang/model_zoom/transformers" )
         alphabet = [one for one in 'ACDEFGHIKLMNPQRSTVWYX']
         self.token_mask = torch.tensor([(one in alphabet) for one in self.tokenizer._token_to_id.keys()])
         
