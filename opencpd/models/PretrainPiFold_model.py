@@ -16,6 +16,7 @@ class PretrainPiFold_Model(PiFold_Model):
     
     @torch.no_grad()
     def forward(self, batch):
+        print(batch)
         h_V, h_P, P_idx, batch_id = batch['h_V'], batch['h_E'], batch['E_idx'], batch['batch_id']
         device = h_V.device
         h_V = self.W_v(self.norm_nodes(self.node_embedding(h_V)))
